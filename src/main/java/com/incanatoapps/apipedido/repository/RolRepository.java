@@ -1,6 +1,9 @@
 package com.incanatoapps.apipedido.repository;
 
+import com.incanatoapps.apipedido.entity.Producto;
 import com.incanatoapps.apipedido.entity.Rol;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +13,5 @@ import java.util.Optional;
 public interface RolRepository extends JpaRepository<Rol, Long> {
     Optional<Rol> findByNombre(String nombre);
     boolean existsByNombre(String nombre);
+    Page<Rol> findByNombreContainingIgnoreCase(Pageable pageable, String nombre);
 }
